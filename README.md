@@ -1,6 +1,8 @@
 # online_course
 
-A new Flutter project.
+A Online course app, fuller project.
+
+1753110 - Nguyen Huu Tien
 
 ## Getting Started
 
