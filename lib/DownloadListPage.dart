@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'RatingStar.dart';
 
-class SearchPage extends StatefulWidget {
-  SearchPage({Key key, this.title}) : super(key: key);
+class DownloadListPage extends StatefulWidget {
+  DownloadListPage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,10 +17,10 @@ class SearchPage extends StatefulWidget {
   final String title;
 
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _DownloadListPageState createState() => _DownloadListPageState();
 }
 
-class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
+class _DownloadListPageState extends State<DownloadListPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -34,132 +34,79 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
     });
   }
 
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(length: 4, vsync: this);
-  }
-
   @override
   Widget build(BuildContext context) {
-    final tab = new TabBar(tabs: <Tab>[
-      new Tab(text: "All"),
-      new Tab(text: "Courses"),
-      new Tab(text: "Path"),
-      new Tab(text: "Authors"),
-    ], controller: _tabController);
-
     return Scaffold(
       appBar: AppBar(
-        title: Row(children: [
-              Container(
-                //height: 55,
-                width: 300,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                  child: Row(children: [
-
-                    Icon(Icons.search, color: Colors.grey),
-
-                    Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left :5.0, right: 5),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none
-                            ),
-                              style: TextStyle(color: Colors.black, fontSize: 17)),
-                        ))
-                  ])
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Row(
+              children: [
+                Text(
+                  'Downloads',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
-          SizedBox(width: 10,),
-          Text("Cancel")
-        ]),
-        bottom: new PreferredSize(
-          preferredSize: tab.preferredSize,
-          child: new Card(
-            elevation: 26.0,
-            color: Theme.of(context).primaryColor,
-            child: tab,
-      ),
-      ),
-    ),
-      body: Container(
-        height: 500,
-        child:
-            _emptyList(),
-              //_courseList()
+                Spacer(),
+                Text(
+                  'Remove all',
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.blue),
+                ),
+              ],
+            ),
+          ),
+          _courseList()
+        ],
       ),
     );
-  }
-
-  _emptyList() {
-    return Padding(
-        padding: const EdgeInsets.only(top: 200),
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.max,
-            // mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                "Over 7,000 course at your fingertips",
-                style: TextStyle(fontSize: 17, color: Colors.black54),
-              ),
-              Text(
-                "Search by tittle, author or subject",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w400),
-              )
-            ],
-          ),
-        ));
   }
 
   _courseList() {
     return Padding(
         padding: EdgeInsets.all(5),
         child: Container(
-            //height: 500,
+            height: 500,
             child: Padding(
-              padding: EdgeInsets.all(2),
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
-                children: [
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                  _courseItem("assets/images/1.png", 'Course title name',
-                      'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
-                  SizedBox(height: 10),
-                ],
-              ),
-            )));
+          padding: EdgeInsets.all(2),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            physics: BouncingScrollPhysics(),
+            children: [
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+              _courseItem("assets/images/1.png", 'Course title name',
+                  'Tien Nguyen', 'Beginer', 'Jun 2021', '4h', 4.5, 100),
+              SizedBox(height: 10),
+            ],
+          ),
+        )));
   }
 
   _courseItem(String asset, String name, String author, String level,

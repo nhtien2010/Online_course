@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      //home: MyHomePage(title: 'Online Courses Home page'),
+      home: MyHomePage(title: 'Online Courses Home page'),
       //home: CourseListPage(title: 'Online Courses'),
       //home: DownloadListPage(title: 'Downloads Courses'),
       //home: SearchPage(title: ''),
-      home: LoginPage(title: ''),
+      //home: LoginPage(title: ''),
      // home: ForgetPasswordPage(title: ''),
       //home: SplashPage(title: ''),
     );
