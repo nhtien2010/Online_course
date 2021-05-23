@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'RatingStar.dart';
 
 class DownloadListPage extends StatefulWidget {
-  DownloadListPage({Key key, this.title}) : super(key: key);
+  DownloadListPage({Key key, this.title, this.onMenuTap}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -15,6 +15,7 @@ class DownloadListPage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final onMenuTap;
 
   @override
   _DownloadListPageState createState() => _DownloadListPageState();
