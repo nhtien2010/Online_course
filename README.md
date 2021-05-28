@@ -4,6 +4,8 @@ A Online course app, fuller project.
 
 1753110 - Nguyen Huu Tien
 
+demo https://youtu.be/drN7Lcuze2o
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
